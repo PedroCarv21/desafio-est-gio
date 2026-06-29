@@ -6,7 +6,15 @@ class Account {
     }
 
     deposit(value) {
+        if (value <= 0) {
+            throw new Error("The deposit amount must be greater than zero.");
+        }
+
         this.balance += value;
+    }
+
+    withdraw() {
+        throw new Error("The withdraw() method must be implemented by the subclass.");
     }
 }
 

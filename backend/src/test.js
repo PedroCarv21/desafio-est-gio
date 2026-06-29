@@ -1,9 +1,11 @@
-const CurrentAccount = require('./models/CurrentAccount');
+const SavingsAccount = require("./models/SavingsAccount");
 
-const account = new CurrentAccount(
-    1,
-    "Pedro",
+const savings = new SavingsAccount(
+    2,
+    "Maria",
     100
 );
 
-console.log(account);
+savings.withdraw(30);
+
+console.log(savings);
