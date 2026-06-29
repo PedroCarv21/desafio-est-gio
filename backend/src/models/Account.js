@@ -16,6 +16,19 @@ class Account {
     withdraw() {
         throw new Error("The withdraw() method must be implemented by the subclass.");
     }
+
+    get type() {
+        return this.constructor.name;
+    }
+
+    toJSON() {
+        return {
+            id: this.id,
+            holder: this.holder,
+            balance: this.balance,
+            type: this.type
+        };
+    }
 }
 
 module.exports = Account;

@@ -13,6 +13,10 @@ class CurrentAccount extends Account {
         this.balance -= total;
     }
 
+    get type() {
+        return "current";
+    }
+
 }
 
 module.exports = CurrentAccount;

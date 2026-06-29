@@ -11,6 +11,10 @@ class SavingsAccount extends Account {
         this.balance -= value;
     }
 
+    get type() {
+        return "savings";
+    }
+
 }
 
 module.exports = SavingsAccount;
