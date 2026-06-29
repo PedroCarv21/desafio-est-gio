@@ -1,0 +1,74 @@
+const { v4: uuid } = require("uuid");
+
+const accounts = require("../database/accounts");
+
+const CurrentAccount = require("../models/CurrentAccount");
+const SavingsAccount = require("../models/SavingsAccount");
+
+class AccountService {
+    createAccount(holder, type, balance = 0) {
+
+        let account;
+    
+        if (type === "current") {
+            account = new CurrentAccount(
+                uuid(),
+                holder,
+                balance
+            );
+        }
+    
+        else if (type === "savings") {
+            account = new SavingsAccount(
+                uuid(),
+                holder,
+                balance
+            );
+        }
+    
+        else {
+            throw new Error("Tipo de conta inválido.");
+        }
+    
+        accounts.push(account);
+    
+        return account;
+    }
+
+    findAll() {
+        return accounts;
+    }
+
+    findById(id) {
+        const account = accounts.find(account => account.id === id);
+
+        if (!account) {
+            throw new Error("Conta não encontrada.");
+        }
+
+        return account;
+    }
+
+    withdraw(id, value) {
+        const account = this.findById(id);
+
+        account.withdraw(value);
+
+        return account;
+    }
+
+    transfer(fromId, toId, value) {
+        const origin = this.findById(fromId);
+        const destination = this.findById(toId);
+
+        origin.withdraw(value);
+        destination.deposit(value);
+
+        return {
+            origin,
+            destination
+        };
+    }
+}
+
+module.exports = new AccountService();
