@@ -27,7 +27,7 @@ class AccountService {
         }
     
         else {
-            throw new Error("Tipo de conta inválido.");
+            throw new Error("Invalid account type.");
         }
     
         accounts.push(account);
@@ -43,7 +43,7 @@ class AccountService {
         const account = accounts.find(account => account.id === id);
 
         if (!account) {
-            throw new Error("Conta não encontrada.");
+            throw new Error("Account not found.");
         }
 
         return account;

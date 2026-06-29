@@ -1,7 +1,7 @@
 const accountService = require("../services/accountService");
 
 class AccountController {
-    createAccount(req, res) {
+    createAccount(req, res, next) {
 
         try {
     
@@ -17,9 +17,7 @@ class AccountController {
     
         } catch (error) {
     
-            return res.status(400).json({
-                message: error.message
-            });
+            next(error);
     
         }
     
@@ -33,7 +31,7 @@ class AccountController {
     
     }
 
-    findById(req, res) {
+    findById(req, res, next) {
 
         try {
     
@@ -45,15 +43,13 @@ class AccountController {
     
         } catch (error) {
     
-            return res.status(404).json({
-                message: error.message
-            });
+            next(error);
     
         }
     
     }
 
-    withdraw(req, res) {
+    withdraw(req, res, next) {
 
         try {
     
@@ -66,15 +62,13 @@ class AccountController {
     
         } catch (error) {
     
-            return res.status(400).json({
-                message: error.message
-            });
+            next(error);
     
         }
     
     }
 
-    transfer(req, res) {
+    transfer(req, res, next) {
 
         try {
     
@@ -94,9 +88,7 @@ class AccountController {
     
         } catch (error) {
     
-            return res.status(400).json({
-                message: error.message
-            });
+            next(error);
     
         }
     
