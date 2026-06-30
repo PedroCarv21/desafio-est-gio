@@ -1,59 +1,19 @@
-import { useEffect, useState } from "react";
+import AccountCard from "./AccountCard";
 
-import { getAccounts } from "../services/api";
+function AccountList({ accounts, onWithdraw }) {
+  return (
+    <div>
+      <h2>Contas</h2>
 
-function AccountList() {
-    const [accounts, setAccounts] = useState([]);
-
-    useEffect(() => {
-
-        async function loadAccounts() {
-    
-            try {
-    
-                const data = await getAccounts();
-    
-                setAccounts(data);
-    
-            } catch (error) {
-    
-                alert(error.message);
-    
-            }
-    
-        }
-    
-        loadAccounts();
-    
-    }, []);
-
-    return (
-
-        <div>
-    
-            <h2>Contas</h2>
-    
-            {
-                accounts.map(account => (
-    
-                    <div key={account.id}>
-    
-                        <h3>{account.holder}</h3>
-    
-                        <p>Tipo: {account.type}</p>
-    
-                        <p>Saldo: R$ {account.balance}</p>
-    
-                        <hr />
-    
-                    </div>
-    
-                ))
-            }
-    
-        </div>
-    
-    );
+      {accounts.map((account) => (
+        <AccountCard
+          key={account.id}
+          account={account}
+          onWithdraw={onWithdraw}
+        />
+      ))}
+    </div>
+  );
 }
 
 export default AccountList;

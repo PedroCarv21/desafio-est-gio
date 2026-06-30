@@ -55,7 +55,7 @@ class AccountController {
     
             const account = accountService.withdraw(
                 req.params.id,
-                req.body.value
+                req.body.amount
             );
     
             return res.json(account);
