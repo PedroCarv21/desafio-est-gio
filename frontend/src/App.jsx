@@ -26,11 +26,15 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Banco Digital</h1>
+      <h1>Banco Agilize</h1>
 
-      <AccountForm onAccountCreated={loadAccounts} />
+      <AccountForm onAccountsChanged={loadAccounts} />
 
-      <AccountList accounts={accounts} onWithdraw={loadAccounts} />
+      <AccountList
+        accounts={accounts}
+        allAccounts={accounts}
+        onAccountsChanged={loadAccounts}
+      />
     </div>
   );
 }

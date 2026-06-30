@@ -1,15 +1,16 @@
 import AccountCard from "./AccountCard";
 
-function AccountList({ accounts, onWithdraw }) {
+function AccountList({ accounts, allAccounts, onAccountsChanged  }) {
   return (
     <div>
-      <h2>Contas</h2>
+      <h2 id="accountlist-h2">Contas</h2>
 
       {accounts.map((account) => (
         <AccountCard
           key={account.id}
           account={account}
-          onWithdraw={onWithdraw}
+          allAccounts={allAccounts}
+          onAccountsChanged={onAccountsChanged}
         />
       ))}
     </div>

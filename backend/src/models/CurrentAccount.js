@@ -3,6 +3,9 @@ const Account = require("./Account");
 class CurrentAccount extends Account {
 
     withdraw(value) {
+        if (value <= 0) {
+            throw new Error("The withdrawal amount must be greater than zero.");
+        }
 
         const total = value + 1;
 

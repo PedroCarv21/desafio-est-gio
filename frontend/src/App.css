@@ -1,12 +1,18 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #450C63;
+  color: #450C63;
 }
 
 .container {
   width: 700px;
   margin: 40px auto;
+}
+
+h1, #accountlist-h2{
+  text-align: center;
+  color: #f4f4f4;
 }
 
 .card {

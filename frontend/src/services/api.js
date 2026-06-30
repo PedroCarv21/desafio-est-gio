@@ -46,3 +46,24 @@ export async function withdraw(accountId, amount) {
 
     return response.json();
 }
+
+export async function transfer(fromId, toId, value) {
+
+    const response = await fetch(`${BASE_URL}/accounts/transfer`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            fromId,
+            toId,
+            value
+        })
+    });
+
+    if (!response.ok) {
+        throw new Error("Erro ao realizar transferência.");
+    }
+
+    return response.json();
+}

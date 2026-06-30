@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createAccount } from "../services/api";
 
-function AccountForm({ onAccountCreated }) {
+function AccountForm({ onAccountsChanged }) {
 
     const [holder, setHolder] = useState("");
     const [type, setType] = useState("current");
@@ -23,7 +23,7 @@ function AccountForm({ onAccountCreated }) {
 
             alert("Conta criada com sucesso!");
             
-            await onAccountCreated();
+            await onAccountsChanged();
 
             setHolder("");
             setType("current");

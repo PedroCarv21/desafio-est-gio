@@ -1,21 +1,35 @@
 import { useState } from "react";
-import { withdraw } from "../services/api";
+import { withdraw, transfer } from "../services/api";
 
-function AccountCard({ account, onWithdraw }) {
-
+function AccountCard({ account, allAccounts, onAccountsChanged }) {
   const [amount, setAmount] = useState("");
+  const [destinationId, setDestinationId] = useState("");
+  const [transferAmount, setTransferAmount] = useState("");
 
   async function handleWithdraw() {
     try {
-
       await withdraw(account.id, Number(amount));
 
       alert("Saque realizado com sucesso!");
 
       setAmount("");
 
-      await onWithdraw();
+      await onAccountsChanged();
+    } catch (error) {
+      alert(error.message);
+    }
+  }
 
+  async function handleTransfer() {
+    try {
+      await transfer(account.id, destinationId, Number(transferAmount));
+
+      alert("Transferência realizada com sucesso!");
+
+      setDestinationId("");
+      setTransferAmount("");
+
+      await onAccountsChanged();
     } catch (error) {
       alert(error.message);
     }
@@ -39,9 +53,42 @@ function AccountCard({ account, onWithdraw }) {
       <br />
       <br />
 
-      <button onClick={handleWithdraw}>
-        Sacar
-      </button>
+      <button onClick={handleWithdraw}>Sacar</button>
+
+      <hr />
+
+      <h4>Transferência</h4>
+
+      <select
+        value={destinationId}
+        onChange={(event) => setDestinationId(event.target.value)}
+      >
+        <option value="">Selecione a conta</option>
+
+        {allAccounts
+          .filter((acc) => acc.id !== account.id)
+          .map((acc) => (
+            <option key={acc.id} value={acc.id}>
+              {acc.holder}
+            </option>
+          ))}
+      </select>
+
+      <br />
+      <br />
+
+      <input
+        type="number"
+        placeholder="Valor"
+        value={transferAmount}
+        onChange={(event) => setTransferAmount(event.target.value)}
+      />
+
+      <br />
+      <br />
+
+      <button onClick={handleTransfer}>Transferir</button>
+
     </div>
   );
 }

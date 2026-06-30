@@ -7,6 +7,14 @@ const SavingsAccount = require("../models/SavingsAccount");
 
 class AccountService {
     createAccount(holder, type, balance = 0) {
+        if (!holder || holder.trim() === "") {
+            throw new Error("Holder name is required.");
+        }
+
+        if (balance < 0) {
+            throw new Error("Initial balance cannot be negative.");
+        }
+
 
         let account;
     
