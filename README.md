@@ -1,61 +1,61 @@
-# Desafio Técnico — Banco 🏦
+# Minha Solução — Banco Agilize
 
-Bem-vindo(a) ao desafio técnico do **Processo Seletivo Agilize — Estágio em Tecnologia**!
 
-Este desafio avalia sua capacidade de transformar **regras de negócio** em um sistema **fullstack**
-funcional, bem organizado e fácil de executar.
 
-> 📄 **A especificação completa está no arquivo [`ESPECIFICACAO.pdf`](./ESPECIFICACAO.pdf).** Leia-a com atenção antes de começar.
->
-> ⏰ **Prazo:** 2 dias corridos — entrega até **00h de 30/06**.
+## Stack
+- **Backend:** Node.js versão 24 (API com Express)
+- **Frontend:** HTML/CSS e JavaScript com React
 
----
+## Pré-requisitos e dependências
+- Node.js 24+ ou superior instalado
+- npm
+- Instalar dependências em cada projeto:
 
-## 🎯 Resumo
+## Como executar
 
-Construa um **Banco** sobre dois tipos de conta (corrente e poupança), respeitando as regras de negócio
-da especificação. A operação **obrigatória** é o **saque**; a **transferência** é **opcional** e conta
-como diferencial.
+### Backend (API)
+```bash
+cd backend
 
-A solução deve ter **duas partes que se comunicam**:
+npm install
 
-- **Backend (API):** expõe uma API HTTP com as operações (toda a regra de negócio fica aqui).
-- **Frontend:** uma interface web que consome a API e permite realizar as operações e ver os resultados.
+npm run start
+```
 
-## 💻 Linguagens aceitas (backend)
+A API vai estar disponível em http://localhost:3000
 
-`JavaScript (Node.js)` · `TypeScript (Node.js)` · `Python` · `Ruby` · `PHP` · `Go`
+### Frontend
+```bash
+cd frontend
 
-> O **frontend** pode usar HTML/CSS/JavaScript, com ou sem framework.
+npm install
 
----
+npm run dev
+```
 
-## 🚀 Como participar
+A aplicação ficará disponível em http://localhost:5173
 
-1. Faça um **fork** deste repositório.
-2. Implemente **backend** e **frontend** no fork (backend em uma das linguagens aceitas).
-3. **Preencha o README** do seu fork seguindo o modelo em [`SUBMISSION.md`](./SUBMISSION.md)
-   (linguagem, pré-requisitos e **passo a passo para subir backend e frontend**).
-4. Faça **commits ao longo do desenvolvimento** — evite um único commit gigante no final.
-5. Envie o **link do seu fork** para **calison@agilize.com.br**.
+## Exemplo de uso
+```
+1. Criar uma conta acessando localhost:5173 (não esqueça de preencher o nome do titular, tipo de conta e o saldo).
+2. Clique no botão 'Criar Conta'.
+3. A conta aparece automaticamente na lista de contas
+4. Para realizar um saque:
+   - Informe um valor
+   - Clique no botão 'Sacar'.
+5. Realizar transferência:
+   - Clique em 'seleciona a conta' e escolha para qual usuário você deseja enviar o dinheiro.
+   - Informe um valor que será enviado.
+   - Clique no botão 'Transferir'
 
----
+```
 
-## ⚠️ Critério eliminatório
+**OBS 1: se a conta for corrente, haverá uma taxa de R$ 1,00 para cada saque realizado.**
 
-> Projetos que **não executarem** seguindo o README — ou cujo README não permita rodar **backend e
-> frontend** — serão **eliminados**. Backend fora das linguagens aceitas também elimina.
->
-> **Teste o passo a passo em uma máquina/pasta limpa antes de enviar.**
+**OBS 2: se a conta for corrente, haverá um cheque especial e a conta poderá ficar até - R$ 500,00.**
 
----
-
-## ✅ O que será avaliado
-
-- **Funcionamento** — backend e frontend rodam, se comunicam e cumprem as regras de negócio.
-- **Qualidade do código** — clareza, organização, separação de responsabilidades, sem duplicação.
-- **Processo** — histórico de commits coerente e README claro.
-
-Dúvidas: **calison@agilize.com.br**
-
-Boa sorte! 🍀
+## Observações (opcional)
+- O projeto utiliza arquitetura separando frontend e backend.
+- A API segue padrão REST com Express.
+- O estado das contas é atualizado via comunicação entre frontend e backend.
+- Não há persistência em banco de dados externo, apenas a utilização de um array para o armazenamento de dados em memória.
