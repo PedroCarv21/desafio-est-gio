@@ -15,3 +15,15 @@ export async function createAccount(account) {
 
     return response.json();
 }
+
+export async function getAccounts() {
+
+    const response = await fetch(`${BASE_URL}/accounts`);
+
+    if (!response.ok) {
+        throw new Error("Error searching for accounts.");
+    }
+
+    return response.json();
+
+}
